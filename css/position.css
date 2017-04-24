@@ -1,0 +1,11 @@
+.row > div:nth-child(odd){
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #ccc;
+}
+.btn{
+  height: 30px;
+  width: 50px;
+  font-size: 10px;
+  text-align: center;
+}

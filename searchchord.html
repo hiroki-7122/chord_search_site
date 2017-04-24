@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>コード検索|Chord Search</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/position.css">
+        <link rel="stylesheet" href="css/chord.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    <style type="text/css">
+    .jumbotron { background:url(./img/main.jpg) center no-repeat;
+                  background-size: cover;
+                color: rgb(255, 255, 255);}
+    </style>
+  </head>
+  <body onload="getChords()">
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="menu.html">
+        Chord Search Engine
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarEexample8">
+      <ul class="nav navbar-nav">
+        <li><a href="chordcreate.html">コード登録</a></li>
+        <li><a href="searchchord.html">コード検索</a></li>
+      </ul>
+      <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
+    </div>
+  </div>
+</nav>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="col-xs-8">
+          <h1>コード検索</h1>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-default " onclick="logout()">ログアウト</button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="javascript:getChords()">
+            <div class="form-group">
+
+
+            <h2 style="text-align:center">コード進行</h2>
+              <h3 id="keepchord" style="text-align:center">→</h2>
+
+
+            <div class="form-group">
+              <label for="inputDescription">コード運指</label>
+              <!---input type="text" class="form-control" id="inputDescription" -->
+
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+                  <center>
+                  1st<l class="hidden-xs"> chord</l><div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                      <input type="radio" name="firstchord" value="x" autocomplete="off" checked>Mute
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="0" autocomplete="off"> 開放弦
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="1" autocomplete="off"> 1
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="2" autocomplete="off"> 2
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="3" autocomplete="off"> 3
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="4" autocomplete="off"> 4
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="5" autocomplete="off"> 5
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="6" autocomplete="off"> 6
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="7" autocomplete="off"> 7
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="firstchord" value="8" autocomplete="off"> 8
+                    </label>
+                  </div>
+                </center>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+                  <center>
+                  2nd<l class="hidden-xs"> chord</l><div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                      <input type="radio" name="secondchord" value="x" autocomplete="off" checked> Mute
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="0" autocomplete="off"> 開放弦
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="1" autocomplete="off"> 1
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="2" autocomplete="off"> 2
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="3" autocomplete="off"> 3
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="4" autocomplete="off"> 4
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="5" autocomplete="off"> 5
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="6" autocomplete="off"> 6
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="7" autocomplete="off"> 7
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="secondchord" value="8" autocomplete="off"> 8
+                    </label>
+                  </div>
+                </center>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+                  <center>
+                  3rd<l class="hidden-xs"> chord</l><div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                      <input type="radio" name="thirdchord" value="x" autocomplete="off" checked> Mute
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="0" autocomplete="off"> 開放弦
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="1" autocomplete="off"> 1
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="2" autocomplete="off"> 2
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="3" autocomplete="off"> 3
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="4" autocomplete="off"> 4
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="5" autocomplete="off"> 5
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="6" autocomplete="off"> 6
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="7" autocomplete="off"> 7
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="thirdchord" value="8" autocomplete="off"> 8
+                    </label>
+                  </div>
+                </center>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+                  <center>
+                  4th<l class="hidden-xs"> chord</l><div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                      <input type="radio" name="fouthchord" value="x" autocomplete="off" checked> Mute
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="0" autocomplete="off"> 開放弦
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="1" autocomplete="off"> 1
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="2" autocomplete="off"> 2
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="3" autocomplete="off"> 3
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="4" autocomplete="off"> 4
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="5" autocomplete="off"> 5
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="6" autocomplete="off"> 6
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="7" autocomplete="off"> 7
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fouthchord" value="8" autocomplete="off"> 8
+                    </label>
+                  </div>
+                </center>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+                  <center>
+                  5th<l class="hidden-xs"> chord</l><div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                      <input type="radio" name="fifthchord" value="x" autocomplete="off" checked> Mute
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="0" autocomplete="off"> 開放弦
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="1" autocomplete="off"> 1
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="2" autocomplete="off"> 2
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="3" autocomplete="off"> 3
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="4" autocomplete="off"> 4
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="5" autocomplete="off"> 5
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="6" autocomplete="off"> 6
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="7" autocomplete="off"> 7
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="fifthchord" value="8" autocomplete="off"> 8
+                    </label>
+                  </div>
+                </center>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9 col-md-offset-1">
+                  <center>
+                  6th<l class="hidden-xs"> chord</l><div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                      <input type="radio" name="sixthchord" value="x" autocomplete="off" checked> Mute
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="0" autocomplete="off"> 開放弦
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="1" autocomplete="off"> 1
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="2" autocomplete="off"> 2
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="3" autocomplete="off"> 3
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="4" autocomplete="off"> 4
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="5" autocomplete="off"> 5
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="6" autocomplete="off"> 6
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="7" autocomplete="off"> 7
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="sixthchord" value="8" autocomplete="off"> 8
+                    </label>
+                  </div>
+                </center>
+              </div>
+            </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-2 col-md-offset-5">
+                  <center>
+                  コード進行に追加<div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                      <input type="radio" name="keepchord" value="0" autocomplete="off" checked>しない
+                    </label>
+                    <label class="btn btn-default">
+                      <input type="radio" name="keepchord" value="1" autocomplete="off"> する
+                    </label>
+                  </div>
+                </center>
+              </div>
+            </div>
+
+
+            <center><button type="submit" class="btn btn-primary">検索</button></center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container">
+      <div class="list-group" id="chordList"></div>
+      <h2 id="chord"></h2>
+      <div class="chord-position">
+        <canvas id="position-graphic" width="400" height="160"></canvas>
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/setting.js"></script>
+    <script src="js/searchchord.js"></script>
+  </body>
+</html>
